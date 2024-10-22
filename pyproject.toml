@@ -43,7 +43,7 @@ dependencies = [
 test = "pytest {args:tests}"
 lint = "ruff check . --fix"
 format = "ruff format ."
-check = ["ruff check .", "pytest tests/"]
+check = ["ruff format .", "ruff check . --fix", "pytest tests/"]
 generator = "python -m src.generator"
 controller = "python -m src.controller"
 
@@ -136,8 +136,7 @@ docstring-code-line-length = 100
 
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401", "D104"]  # Ignore unused imports and missing package docstring in __init__.py files
-"test_*.py" = ["D", "ANN"]  # Ignore docstring and annotation requirements in tests
-"*_test.py" = ["D", "ANN"]  # Ignore docstring and annotation requirements in tests
+"*_test.py" = ["D", "ANN", "S101", "ARG001", "ARG002", "SLF001"]
 
 [tool.ruff.lint.mccabe]
 max-complexity = 10
@@ -148,7 +147,32 @@ lines-between-types = 1
 
 [tool.pytest.ini_options]
 minversion = "6.0"
-addopts = "-ra -q --cov"
+addopts = "-ra -q --cov=src --cov-report=term-missing --cov-report=xml"
 testpaths = ["tests"]
 python_files = ["test_*.py", "*_test.py"]
 asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+norecursedirs = ["__init__.py"]
+
+[tool.coverage.run]
+source = ["src"]
+branch = true
+omit = [
+    "tests/*",
+    "*/__init__.py",
+    "*/test_*.py",
+    "*/*_test.py"
+]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "pass",
+    "raise ImportError"
+]
