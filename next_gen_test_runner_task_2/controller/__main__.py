@@ -1,5 +1,7 @@
 """Main module for running the Controller."""
 
+import statistics
+
 from typing import List
 
 from .controller import Controller, ControllerError
@@ -25,6 +27,12 @@ class Main:
       output: List[int] = controller.run()
       for value in output:
         print(value)
+
+      if output:
+        median = statistics.median(output)
+        average = statistics.mean(output)
+        print(f"Median: {median}")
+        print(f"Average: {average}")
     except ControllerError as e:
       raise RuntimeError from e
 

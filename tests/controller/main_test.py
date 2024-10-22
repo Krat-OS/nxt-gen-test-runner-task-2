@@ -26,9 +26,12 @@ def test_successful_execution(
   captured: pytest.CaptureFixture[str] = capsys.readouterr()
   output_lines: List[str] = captured.out.splitlines()
 
-  assert len(output_lines) == len(test_values)
-  for expected, actual in zip(test_values, output_lines):
+  assert len(output_lines) == len(test_values) + 2
+  for expected, actual in zip(test_values, output_lines[: len(test_values)]):
     assert str(expected) == actual
+
+  assert output_lines[-2] == f"Median: {100}"
+  assert output_lines[-1] == f"Average: {114}"
 
 
 def test_controller_error_handling(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -86,9 +89,12 @@ def test_large_output(monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFix
   captured: pytest.CaptureFixture[str] = capsys.readouterr()
   output_lines: List[str] = captured.out.splitlines()
 
-  assert len(output_lines) == len(test_values)
-  for expected, actual in zip(test_values, output_lines):
+  assert len(output_lines) == len(test_values) + 2
+  for expected, actual in zip(test_values, output_lines[: len(test_values)]):
     assert str(expected) == actual
+
+  assert output_lines[-2] == f"Median: {499.5}"
+  assert output_lines[-1] == f"Average: {499.5}"
 
 
 def test_negative_values(
@@ -111,6 +117,9 @@ def test_negative_values(
   captured: pytest.CaptureFixture[str] = capsys.readouterr()
   output_lines: List[str] = captured.out.splitlines()
 
-  assert len(output_lines) == len(test_values)
-  for expected, actual in zip(test_values, output_lines):
+  assert len(output_lines) == len(test_values) + 2
+  for expected, actual in zip(test_values, output_lines[: len(test_values)]):
     assert str(expected) == actual
+
+  assert output_lines[-2] == f"Median: {-100}"
+  assert output_lines[-1] == f"Average: {-114}"
