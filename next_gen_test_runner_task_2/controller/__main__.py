@@ -15,8 +15,7 @@ class Main:
     """Initialize and run the Controller.
 
     This function creates an instance of the Controller class and attempts to run it.
-    If a ControllerError is raised during execution, it will be caught and re-raised
-    as a RuntimeError.
+    It also prints the output and calculates and displays basic statistics (median and mean).
 
     Raises:
       RuntimeError: If a ControllerError occurs during the execution of the controller.
