@@ -31,7 +31,7 @@ class Controller:
     python_path: str = str(Path(sys.executable))
 
     self.child: subprocess.Popen = subprocess.Popen(  # noqa: S603
-      [python_path, "-m", "src.generator"],
+      [python_path, "-m", "next_gen_test_runner_task_2.generator"],
       stdin=subprocess.PIPE,
       stdout=subprocess.PIPE,
       text=True,

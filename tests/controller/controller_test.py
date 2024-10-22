@@ -5,7 +5,7 @@ from typing import Any, List, Optional, Tuple
 
 import pytest
 
-from src.controller.controller import Controller, ControllerError
+from next_gen_test_runner_task_2.controller.controller import Controller, ControllerError
 
 pytest.mark.tryfirst = True
 pytest.mark.serial = True
@@ -180,7 +180,7 @@ def test_subprocess_arguments(setup_controller: Controller) -> None:
   """Test that subprocess is created with correct arguments."""
 
   python_path: str = str(Path(sys.executable))
-  expected_args: Tuple[str, ...] = (python_path, "-m", "src.generator")
+  expected_args: Tuple[str, ...] = (python_path, "-m", "next_gen_test_runner_task_2.generator")
 
   assert isinstance(setup_controller.child, MockPopen)
   actual_args: List[str] = setup_controller.child.args

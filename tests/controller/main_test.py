@@ -2,8 +2,8 @@ from typing import Any, List
 
 import pytest
 
-from src.controller.__main__ import Main
-from src.controller.controller import Controller, ControllerError
+from next_gen_test_runner_task_2.controller.__main__ import Main
+from next_gen_test_runner_task_2.controller.controller import Controller, ControllerError
 
 
 def test_successful_execution(

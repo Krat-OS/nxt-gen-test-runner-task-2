@@ -1,6 +1,6 @@
 import pytest
 
-from src.generator.__main__ import Main
+from next_gen_test_runner_task_2.generator.__main__ import Main
 
 
 def test_hi_command(monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]) -> None:
@@ -22,7 +22,9 @@ def test_get_random_command(
 
   inputs = iter(["GetRandom", "Shutdown"])
   monkeypatch.setattr("builtins.input", lambda: next(inputs))
-  monkeypatch.setattr("src.generator.random_generator.RandomGenerator.generate", lambda: 42)
+  monkeypatch.setattr(
+    "next_gen_test_runner_task_2.generator.random_generator.RandomGenerator.generate", lambda: 42
+  )
 
   Main.main()
   captured = capsys.readouterr()
@@ -65,7 +67,9 @@ def test_multiple_commands_sequence(
 
   inputs = iter(["Hi", "GetRandom", "InvalidCommand", "Shutdown"])
   monkeypatch.setattr("builtins.input", lambda: next(inputs))
-  monkeypatch.setattr("src.generator.random_generator.RandomGenerator.generate", lambda: 42)
+  monkeypatch.setattr(
+    "next_gen_test_runner_task_2.generator.random_generator.RandomGenerator.generate", lambda: 42
+  )
 
   Main.main()
   captured = capsys.readouterr()

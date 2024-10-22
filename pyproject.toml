@@ -25,11 +25,11 @@ dev = [
 ]
 
 [project.scripts]
-generator = "generator.__main__:main"
-controller = "controller.__main__:main"
+generator = "next_gen_test_runner_task_2.generator.__main__:main"
+controller = "next_gen_test_runner_task_2.controller.__main__:main"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src"]
+packages = ["next_gen_test_runner_task_2"]
 
 [tool.hatch.envs.default]
 dependencies = [
@@ -44,8 +44,8 @@ test = "pytest {args:tests}"
 lint = "ruff check . --fix"
 format = "ruff format ."
 check = ["ruff format .", "ruff check . --fix", "pytest tests/"]
-generator = "python -m src.generator"
-controller = "python -m src.controller"
+generator = "python -m next_gen_test_runner_task_2.generator"
+controller = "python -m next_gen_test_runner_task_2.controller"
 
 [tool.ruff]
 line-length = 100
@@ -147,7 +147,7 @@ lines-between-types = 1
 
 [tool.pytest.ini_options]
 minversion = "6.0"
-addopts = "-ra -q --cov=src --cov-report=term-missing --cov-report=xml"
+addopts = "-ra -q --cov=next_gen_test_runner_task_2 --cov-report=term-missing --cov-report=xml"
 testpaths = ["tests"]
 python_files = ["test_*.py", "*_test.py"]
 asyncio_mode = "auto"
@@ -155,7 +155,7 @@ asyncio_default_fixture_loop_scope = "function"
 norecursedirs = ["__init__.py"]
 
 [tool.coverage.run]
-source = ["src"]
+source = ["next_gen_test_runner_task_2"]
 branch = true
 omit = [
     "tests/*",

@@ -4,7 +4,7 @@ from typing import Set
 
 import pytest
 
-from src.generator.random_generator import RandomGenerator
+from next_gen_test_runner_task_2.generator.random_generator import RandomGenerator
 
 
 def test_generate_returns_integer():
