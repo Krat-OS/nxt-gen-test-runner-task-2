@@ -1,0 +1,17 @@
+# Virtual Environment
+.venv/
+
+# Python Cache Files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ruff_cache/
+
+# VSCode
+.vscode/
+
+# Coverage
+.coverage
+coverage.xml
+htmlcov/
