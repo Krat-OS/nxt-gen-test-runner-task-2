@@ -41,7 +41,7 @@ dependencies = [
 
 [tool.hatch.envs.default.scripts]
 test = "pytest {args:tests}"
-lint = "ruff check ."
+lint = "ruff check . --fix"
 format = "ruff format ."
 check = ["ruff check .", "pytest tests/"]
 generator = "python -m src.generator"
@@ -114,6 +114,7 @@ ignore = [
     "D213",   # Multi-line docstring summary should start at the second line
     "ISC001", # Implicit string concatenation
     "COM812", # Missing trailing comma in Python 3.6+
+    "S311",   # Standard pseudo-random generators are not suitable for security/cryptographic purposes
 ]
 
 [tool.ruff.lint.pep8-naming]
@@ -134,7 +135,7 @@ docstring-code-format = true
 docstring-code-line-length = 100
 
 [tool.ruff.lint.per-file-ignores]
-"__init__.py" = ["F401"]  # Ignore unused imports in __init__.py files
+"__init__.py" = ["F401", "D104"]  # Ignore unused imports and missing package docstring in __init__.py files
 "test_*.py" = ["D", "ANN"]  # Ignore docstring and annotation requirements in tests
 "*_test.py" = ["D", "ANN"]  # Ignore docstring and annotation requirements in tests
 
