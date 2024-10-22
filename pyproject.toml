@@ -25,8 +25,8 @@ dev = [
 ]
 
 [project.scripts]
-generator = "next_gen_test_runner_task_2.generator.__main__:main"
-controller = "next_gen_test_runner_task_2.controller.__main__:main"
+generator = "next_gen_test_runner_task_2.generator:main"
+controller = "next_gen_test_runner_task_2.controller:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["next_gen_test_runner_task_2"]

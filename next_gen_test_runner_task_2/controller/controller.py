@@ -65,7 +65,19 @@ class Controller:
       raise ControllerError(msg) from e
 
   def run(self) -> List[int]:
-    """Run the controller process."""
+    """Run the controller process.
+
+    This method performs the following steps:
+    1. Checks the status of the child process.
+    2. Fetches a list of random numbers.
+    3. Sends a shutdown command to the child process.
+    4. Processes the fetched responses into a list of integers.
+    5. Returns the sorted list of integers.
+
+    Returns:
+      List[int]: A sorted list of integers obtained from processing the responses.
+
+    """
     self.check_child_process()
 
     count: int = 100
@@ -76,7 +88,7 @@ class Controller:
 
     numbers: List[int] = self.process_responses(responses)
 
-    return numbers
+    return sorted(numbers)
 
   def process_responses(self, responses: List[str]) -> List[int]:
     """Process a list of string responses and convert them to integers.
