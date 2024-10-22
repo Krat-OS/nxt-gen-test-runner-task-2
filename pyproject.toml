@@ -49,7 +49,7 @@ controller = "python -m src.controller"
 
 [tool.ruff]
 line-length = 100
-indent-width = 4
+indent-width = 2
 target-version = "py38"
 
 extend-exclude = [
@@ -113,6 +113,7 @@ ignore = [
     "D203",   # 1 blank line required before class docstring
     "D213",   # Multi-line docstring summary should start at the second line
     "ISC001", # Implicit string concatenation
+    "COM812", # Missing trailing comma in Python 3.6+
 ]
 
 [tool.ruff.lint.pep8-naming]
